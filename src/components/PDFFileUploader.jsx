@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import renderFile from "../utils/RenderFile";
+import renderPDF from "../utils/renderPDF";
 
 function PDFFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -8,7 +8,7 @@ function PDFFileUploader() {
   return (
     <>
       <div>
-        <form onSubmit={(e) => renderFile(e, selectedFile, canvasRef)}>
+        <form onSubmit={(e) => renderPDF(e, selectedFile, canvasRef)}>
           <label>Bank Statement(PDF)</label>
           <input
             type="file"
@@ -17,7 +17,7 @@ function PDFFileUploader() {
           />
           <button type="submit">Submit</button>
         </form>
-        <canvas ref={canvasRef}></canvas>
+        <div ref={canvasRef}></div>
       </div>
     </>
   );
