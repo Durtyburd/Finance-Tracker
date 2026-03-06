@@ -1,4 +1,4 @@
-Finance Tracker (React + Vite)
+Finance Tracker (React + Vite) | https://durtyburd.github.io/Finance-Tracker/ (live site)
 
 A simple finance tracking web application built with React and Vite that allows users to view, process, and analyze financial transactions. This project focuses on demonstrating practical JavaScript logic, React component structure, and state management.
 
