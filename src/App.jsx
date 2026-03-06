@@ -1,5 +1,6 @@
 import JSONFileUploader from "./components/JSONFileUploader";
 import PDFFileUploader from "./components/pdfFileUploader";
+import TotalIncome from "./components/TotalBalance";
 
 function App() {
   return (

@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import renderPDF from "../utils/renderPDF";
+import parsePDF from "../utils/parsePDF";
 
 function PDFFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -8,7 +9,12 @@ function PDFFileUploader() {
   return (
     <>
       <div>
-        <form onSubmit={(e) => renderPDF(e, selectedFile, canvasRef)}>
+        <form
+          onSubmit={(e) => {
+            renderPDF(e, selectedFile, canvasRef);
+            parsePDF(e, selectedFile);
+          }}
+        >
           <label>Bank Statement(PDF)</label>
           <input
             type="file"

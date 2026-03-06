@@ -1,25 +1,17 @@
 import { useState } from "react";
+import TotalBalance from "./TotalBalance";
+import parseJSON from "../utils/parseJSON";
 
 function JSONFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [transactions, setTransactions] = useState(null);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!selectedFile) return;
-
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const parsed = JSON.parse(event.target.result);
-      setTransactions(parsed.transactions); // assuming your JSON has { transactions: [...] }
-    };
-    reader.readAsText(selectedFile);
-  }
+  const transactionList = [];
 
   return (
     <>
       <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => parseJSON(e, selectedFile, setTransactions)}>
           <label>Bank Statement (JSON)</label>
           <input
             type="file"
@@ -29,12 +21,25 @@ function JSONFileUploader() {
           <button type="submit">Submit</button>
         </form>
         {transactions &&
-          transactions.map((t) => (
-            <p key={t.id}>
-              {t.date} - {t.description} - {t.category} - {"$" + t.amount}
-            </p>
-          ))}
+          transactions.map(
+            (t) => (
+              transactionList.push(Number(t.amount)),
+              (
+                <p key={t.id}>
+                  {t.date} - {t.description} - {t.category} - {"$" + t.amount}
+                </p>
+              )
+            ),
+          )}
       </div>
+      <TotalBalance
+        amount={transactionList
+          .reduce((acc, currentValue) => acc + currentValue, 0)
+          .toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+          })}
+      />
     </>
   );
 }
