@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 trashcodes.js
+bank_statement_NFCU.pdf
 
 # Editor directories and files
 .vscode/*

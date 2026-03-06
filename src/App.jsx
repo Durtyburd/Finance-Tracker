@@ -1,11 +1,13 @@
-import FileUploader from "./components/FileUploader";
+import JSONFileUploader from "./components/JSONFileUploader";
+import PDFFileUploader from "./components/pdfFileUploader";
 
 function App() {
   return (
     <>
       <div>
-        <h1>Hello. World.</h1>
-        <FileUploader />
+        <h1>Finance Tracker</h1>
+        <JSONFileUploader />
+        <PDFFileUploader />
       </div>
     </>
   );

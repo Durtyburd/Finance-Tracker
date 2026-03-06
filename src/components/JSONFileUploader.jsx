@@ -1,12 +1,8 @@
 import { useState } from "react";
 
-function FileUploader() {
+function JSONFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [transactions, setTransactions] = useState(null);
-
-  function handleFileChange(e) {
-    setSelectedFile(e.target.files[0]);
-  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -24,11 +20,11 @@ function FileUploader() {
     <>
       <div>
         <form onSubmit={handleSubmit}>
-          <label>Bank Statement</label>
+          <label>Bank Statement (JSON)</label>
           <input
             type="file"
             name="bank-statement"
-            onChange={handleFileChange}
+            onChange={(e) => setSelectedFile(e.target.files[0])}
           />
           <button type="submit">Submit</button>
         </form>
@@ -43,4 +39,4 @@ function FileUploader() {
   );
 }
 
-export default FileUploader;
+export default JSONFileUploader;
