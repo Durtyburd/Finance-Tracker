@@ -15,8 +15,12 @@ function CSVFileUploader() {
   return (
     <>
       <div>
+        <p>
+          This section will render a list of transactions. Your total balance,
+          income, and expenses from a CSV file.
+        </p>
         <form onSubmit={(e) => parseCSV(e, selectedFile, setTransactions)}>
-          <label>Bank Statement(CSV)</label>
+          <label>Bank Statement(.csv)</label>
           <input
             type="file"
             name="bank-statement"

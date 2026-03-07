@@ -13,8 +13,12 @@ function JSONFileUploader() {
   return (
     <>
       <div>
+        <p>
+          This section will render a list of transactions, total balance,
+          income, and expenses from a JSON file.
+        </p>
         <form onSubmit={(e) => parseJSON(e, selectedFile, setTransactions)}>
-          <label>Bank Statement (JSON)</label>
+          <label>Bank Statement(.json)</label>
           <input
             type="file"
             name="bank-statement"

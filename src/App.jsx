@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <div>
-        <h1>Finance Tracker</h1>
+        <h1>NFCU Finance Tracker</h1>
         <CSVFileUploader />
         <JSONFileUploader />
         <PDFFileUploader />

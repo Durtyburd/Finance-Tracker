@@ -9,13 +9,14 @@ function PDFFileUploader() {
   return (
     <>
       <div>
+        <p>This section will render your PDF file to screen.</p>
         <form
           onSubmit={(e) => {
             renderPDF(e, selectedFile, canvasRef);
             parsePDF(e, selectedFile);
           }}
         >
-          <label>Bank Statement(PDF)</label>
+          <label>Bank Statement(.pdf)</label>
           <input
             type="file"
             name="bank-statement"
