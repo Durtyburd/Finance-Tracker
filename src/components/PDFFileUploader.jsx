@@ -27,6 +27,7 @@ function PDFFileUploader() {
         </form>
         <div ref={canvasRef}></div>
       </div>
+      <hr style={{ border: "2px solid black" }} />
     </>
   );
 }

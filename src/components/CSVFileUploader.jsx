@@ -5,6 +5,7 @@ import TotalExpense from "./TotalExpense";
 import TotalIncome from "./TotalIncome";
 import Chart from "./Chart";
 import calculatePercentage from "../utils/calculatePercentage";
+import TotalTransactions from "./TotalTransactions";
 
 function CSVFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -31,6 +32,11 @@ function CSVFileUploader() {
           />
           <button type="submit">Submit</button>
         </form>{" "}
+        {transactions && (
+          <>
+            <TotalTransactions amountOfTransactions={transactionList.length} />
+          </>
+        )}
         {transactions &&
           transactions.map((t) => (
             <p key={t.id}>
@@ -72,9 +78,9 @@ function CSVFileUploader() {
               })}
           />
           <Chart obj={calculatePercentage(transactions)} />
-          <hr />
         </>
       )}
+      <hr style={{ border: "2px solid black" }} />
     </>
   );
 }

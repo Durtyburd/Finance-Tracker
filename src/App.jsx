@@ -1,7 +1,7 @@
 import CSVFileUploader from "./components/CSVFileUploader";
 import JSONFileUploader from "./components/JSONFileUploader";
 import PDFFileUploader from "./components/pdfFileUploader";
-import TotalIncome from "./components/TotalBalance";
+import "./App.css";
 
 function App() {
   return (

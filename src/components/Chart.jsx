@@ -10,7 +10,6 @@ function Chart(props) {
       color: colors[index % colors.length],
     }))
     .filter((item) => !Number.isNaN(item.value));
-  console.log(data);
   return (
     <PieChart
       data={data}

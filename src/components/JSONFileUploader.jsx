@@ -3,12 +3,17 @@ import TotalBalance from "./TotalBalance";
 import parseJSON from "../utils/parseJSON";
 import TotalIncome from "./TotalIncome";
 import TotalExpense from "./TotalExpense";
+import TotalTransactions from "./TotalTransactions";
+import Chart from "./Chart";
+import calculatePercentage from "../utils/calculatePercentage";
 
 function JSONFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [transactions, setTransactions] = useState(null);
 
-  const transactionList = [];
+  const transactionList = transactions
+    ? transactions.map((t) => Number(t.amount))
+    : [];
 
   return (
     <>
@@ -27,17 +32,21 @@ function JSONFileUploader() {
           />
           <button type="submit">Submit</button>
         </form>
+        {transactions && (
+          <>
+            <TotalTransactions amountOfTransactions={transactionList.length} />
+          </>
+        )}
         {transactions &&
-          transactions.map(
-            (t) => (
-              transactionList.push(Number(t.amount)),
-              (
-                <p key={t.id}>
-                  {t.date} | {t.description} | {t.category} | {"$" + t.amount}
-                </p>
-              )
-            ),
-          )}
+          transactions.map((t) => (
+            <p key={t.id}>
+              {t.date} | {t.description} | {t.category} |{" "}
+              {Number(t.amount).toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })}
+            </p>
+          ))}
       </div>
       {transactions && (
         <>
@@ -67,9 +76,10 @@ function JSONFileUploader() {
                 currency: "USD",
               })}
           />
-          <hr />
+          <Chart obj={calculatePercentage(transactions)} />
         </>
       )}
+      <hr style={{ border: "2px solid black" }} />
     </>
   );
 }
