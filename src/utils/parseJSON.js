@@ -5,7 +5,7 @@ function parseJSON(e, file, setter) {
   const reader = new FileReader();
   reader.onload = (event) => {
     const parsed = JSON.parse(event.target.result);
-    setter(parsed.transactions); // assuming your JSON has { transactions: [...] }
+    setter(parsed.transactions);
   };
   reader.readAsText(file);
 }

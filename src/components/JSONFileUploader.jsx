@@ -1,6 +1,8 @@
 import { useState } from "react";
 import TotalBalance from "./TotalBalance";
 import parseJSON from "../utils/parseJSON";
+import TotalIncome from "./TotalIncome";
+import TotalExpense from "./TotalExpense";
 
 function JSONFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -34,6 +36,24 @@ function JSONFileUploader() {
       </div>
       <TotalBalance
         amount={transactionList
+          .reduce((acc, currentValue) => acc + currentValue, 0)
+          .toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+          })}
+      />
+      <TotalIncome
+        amount={transactionList
+          .filter((value) => value > 0)
+          .reduce((acc, currentValue) => acc + currentValue, 0)
+          .toLocaleString("en-US", {
+            style: "currency",
+            currency: "USD",
+          })}
+      />
+      <TotalExpense
+        amount={transactionList
+          .filter((value) => value <= 0)
           .reduce((acc, currentValue) => acc + currentValue, 0)
           .toLocaleString("en-US", {
             style: "currency",
