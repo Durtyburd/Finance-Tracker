@@ -18,7 +18,6 @@ async function parsePDF(e, file) {
     const pageText = textContent.items.map((item) => item.str).join(" ");
     extractedText += pageText + "\n\n";
   }
-  console.log(extractedText);
 }
 
 export default parsePDF;

@@ -19,6 +19,7 @@ function PDFFileUploader() {
           <input
             type="file"
             name="bank-statement"
+            accept=".pdf"
             onChange={(e) => setSelectedFile(e.target.files[0])}
           />
           <button type="submit">Submit</button>

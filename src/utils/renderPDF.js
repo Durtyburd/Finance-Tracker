@@ -1,8 +1,8 @@
 import * as pdfjsLib from "pdfjs-dist";
 import pdfWorker from "pdfjs-dist/build/pdf.worker?worker";
-pdfjsLib.GlobalWorkerOptions.workerPort = new pdfWorker();
 
 async function renderPDF(e, file, containerRef) {
+  pdfjsLib.GlobalWorkerOptions.workerPort = new pdfWorker();
   e.preventDefault();
   if (!file) return;
 
