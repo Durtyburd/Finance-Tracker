@@ -3,6 +3,8 @@ import parseCSV from "../utils/parseCSV";
 import TotalBalance from "./TotalBalance";
 import TotalExpense from "./TotalExpense";
 import TotalIncome from "./TotalIncome";
+import Chart from "./Chart";
+import calculatePercentage from "../utils/calculatePercentage";
 
 function CSVFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -69,6 +71,7 @@ function CSVFileUploader() {
                 currency: "USD",
               })}
           />
+          <Chart obj={calculatePercentage(transactions)} />
           <hr />
         </>
       )}
