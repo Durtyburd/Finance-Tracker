@@ -1,5 +1,4 @@
-function parseJSON(e, file, setter) {
-  e.preventDefault();
+function parseJSON(file, setter) {
   if (!file) return;
 
   const reader = new FileReader();

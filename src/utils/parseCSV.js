@@ -1,12 +1,18 @@
 import Papa from "papaparse";
 
-function parseCSV(e, file, setter) {
-  e.preventDefault();
+function parseCSV(file, setter) {
   if (!file) return;
   Papa.parse(file, {
     header: true,
     skipEmptyLines: true,
     complete: (results) => {
+      const rows = results.data;
+
+      if (!rows.length || !rows[0]["Posting Date"]) {
+        alert("This is not a valid NFCU CSV file.");
+        setter(null);
+        return;
+      }
       const transactions = results.data.map((row, index) => {
         const rawAmount = Number(row["Amount"]);
         const indicator = row["Credit Debit Indicator"]?.trim();
