@@ -4,7 +4,7 @@ A simple finance tracking web application built with React and Vite that allows 
 
 Features
 
-- Upload financial data (JSON or CSV)
+- Upload NFCU financial data (CSV)
 
 - Display transactions in a clean UI
 
@@ -48,5 +48,5 @@ OR
 
 1. Go to
    https://durtyburd.github.io/Finance-Tracker/
-2. Input your CSV or JSON file
+2. Input your CSV file
 3. Hit submit
