@@ -4,7 +4,7 @@ A simple finance tracking web application built with React and Vite that allows 
 
 Features
 
-- Upload financial data (JSON or future PDF support)
+- Upload financial data (JSON or CSV)
 
 - Display transactions in a clean UI
 
@@ -26,6 +26,10 @@ Tech Stack
 
 - Node / npm
 
+- Vitest (Testing)
+
+- gh-pages (Hosting)
+
 Getting Started
 
 1. Clone the repository
@@ -39,3 +43,10 @@ Getting Started
 The app will start locally at:
 
 http://localhost:5173
+
+OR
+
+1. Go to
+   https://durtyburd.github.io/Finance-Tracker/
+2. Input your CSV or JSON file
+3. Hit submit

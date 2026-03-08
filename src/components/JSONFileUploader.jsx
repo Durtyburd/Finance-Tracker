@@ -6,6 +6,10 @@ import TotalExpense from "./TotalExpense";
 import TotalTransactions from "./TotalTransactions";
 import Chart from "./Chart";
 import calculatePercentage from "../utils/calculatePercentage";
+import calculateBalance from "../utils/calculateBalance";
+import calculateIncome from "../utils/calculateIncome";
+import calculateExpenses from "../utils/calculateExpenses";
+import listTransactions from "../utils/listTransactions";
 
 function JSONFileUploader() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -38,44 +42,15 @@ function JSONFileUploader() {
           </>
         )}
         {transactions &&
-          transactions.map((t) => (
-            <p key={t.id}>
-              {t.date} | {t.description} | {t.category} |{" "}
-              {Number(t.amount).toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-              })}
-            </p>
-          ))}
+          listTransactions(transactions).map((line, i) => {
+            return <p key={i}>{line}</p>;
+          })}
       </div>
       {transactions && (
         <>
-          <TotalBalance
-            amount={transactionList
-              .reduce((acc, currentValue) => acc + currentValue, 0)
-              .toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-              })}
-          />
-          <TotalIncome
-            amount={transactionList
-              .filter((value) => value > 0)
-              .reduce((acc, currentValue) => acc + currentValue, 0)
-              .toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-              })}
-          />
-          <TotalExpense
-            amount={transactionList
-              .filter((value) => value <= 0)
-              .reduce((acc, currentValue) => acc + currentValue, 0)
-              .toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-              })}
-          />
+          <TotalBalance amount={calculateBalance(transactionList)} />
+          <TotalIncome amount={calculateIncome(transactionList)} />
+          <TotalExpense amount={calculateExpenses(transactionList)} />
           <Chart obj={calculatePercentage(transactions)} />
         </>
       )}

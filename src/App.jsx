@@ -1,6 +1,5 @@
 import CSVFileUploader from "./components/CSVFileUploader";
 import JSONFileUploader from "./components/JSONFileUploader";
-import PDFFileUploader from "./components/pdfFileUploader";
 import "./App.css";
 
 function App() {
@@ -10,7 +9,6 @@ function App() {
         <h1>NFCU Finance Tracker</h1>
         <CSVFileUploader />
         <JSONFileUploader />
-        <PDFFileUploader />
       </div>
     </>
   );
