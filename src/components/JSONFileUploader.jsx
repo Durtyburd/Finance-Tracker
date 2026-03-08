@@ -1,4 +1,3 @@
-import { useState } from "react";
 import TotalBalance from "./TotalBalance";
 import parseJSON from "../utils/parseJSON";
 import TotalIncome from "./TotalIncome";
@@ -10,14 +9,16 @@ import calculateBalance from "../utils/calculateBalance";
 import calculateIncome from "../utils/calculateIncome";
 import calculateExpenses from "../utils/calculateExpenses";
 import listTransactions from "../utils/listTransactions";
+import useTransactions from "../hooks/useTransactions";
 
 function JSONFileUploader() {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [transactions, setTransactions] = useState(null);
-
-  const transactionList = transactions
-    ? transactions.map((t) => Number(t.amount))
-    : [];
+  const {
+    selectedFile,
+    setSelectedFile,
+    transactions,
+    setTransactions,
+    transactionList,
+  } = useTransactions();
 
   return (
     <>

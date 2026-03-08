@@ -1,4 +1,3 @@
-import { useState } from "react";
 import parseCSV from "../utils/parseCSV";
 import TotalBalance from "./TotalBalance";
 import TotalExpense from "./TotalExpense";
@@ -10,15 +9,16 @@ import calculateBalance from "../utils/calculateBalance";
 import calculateExpenses from "../utils/calculateExpenses";
 import calculateIncome from "../utils/calculateIncome";
 import listTransactions from "../utils/listTransactions";
+import useTransactions from "../hooks/useTransactions";
 
 function CSVFileUploader() {
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [transactions, setTransactions] = useState(null);
-
-  const transactionList = transactions
-    ? transactions.map((t) => Number(t.amount))
-    : [];
-
+  const {
+    selectedFile,
+    setSelectedFile,
+    transactions,
+    setTransactions,
+    transactionList,
+  } = useTransactions();
   return (
     <>
       <div>
