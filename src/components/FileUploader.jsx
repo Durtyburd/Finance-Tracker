@@ -10,8 +10,10 @@ import calculateExpenses from "../utils/calculateExpenses";
 import calculateIncome from "../utils/calculateIncome";
 import listTransactions from "../utils/listTransactions";
 import useTransactions from "../hooks/useTransactions";
+import getFileType from "../utils/getFileType";
+import parseJSON from "../utils/parseJSON";
 
-function CSVFileUploader() {
+function FileUploader() {
   const {
     selectedFile,
     setSelectedFile,
@@ -19,33 +21,45 @@ function CSVFileUploader() {
     setTransactions,
     transactionList,
   } = useTransactions();
+
   return (
     <>
       <div>
         <p>
           This section will render a list of transactions. Your total balance,
-          income, and expenses from a CSV file.
+          income, and expenses from a CSV or JSON file.
         </p>
-        <form onSubmit={(e) => parseCSV(e, selectedFile, setTransactions)}>
-          <label>Bank Statement(.csv)</label>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const fileType = getFileType(selectedFile);
+            if (fileType === "text/csv") {
+              parseCSV(e, selectedFile, setTransactions);
+            } else if (fileType === "application/json") {
+              parseJSON(e, selectedFile, setTransactions);
+            }
+          }}
+        >
+          <label>Bank Statement(.csv or .json)</label>
           <input
             type="file"
             name="bank-statement"
-            accept=".csv"
+            accept=".csv, .json"
             onChange={(e) => setSelectedFile(e.target.files[0])}
           />
           <button type="submit">Submit</button>
         </form>{" "}
-        {transactions && (
-          <>
-            <TotalTransactions amountOfTransactions={transactionList.length} />
-          </>
-        )}
-        {transactions &&
-          listTransactions(transactions).map((line, i) => {
-            return <p key={i}>{line}</p>;
-          })}
       </div>
+      <hr style={{ border: "2px solid black" }} />
+      {transactions && (
+        <>
+          <TotalTransactions amountOfTransactions={transactionList.length} />
+        </>
+      )}
+      {transactions &&
+        listTransactions(transactions).map((line, i) => {
+          return <p key={i}>{line}</p>;
+        })}
 
       {transactions && (
         <>
@@ -55,9 +69,8 @@ function CSVFileUploader() {
           <Chart obj={calculatePercentage(transactions)} />
         </>
       )}
-      <hr style={{ border: "2px solid black" }} />
     </>
   );
 }
 
-export default CSVFileUploader;
+export default FileUploader;

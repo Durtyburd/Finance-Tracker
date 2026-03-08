@@ -1,14 +1,12 @@
-import CSVFileUploader from "./components/CSVFileUploader";
-import JSONFileUploader from "./components/JSONFileUploader";
 import "./App.css";
+import FileUploader from "./components/FileUploader";
 
 function App() {
   return (
     <>
       <div>
         <h1>NFCU Finance Tracker</h1>
-        <CSVFileUploader />
-        <JSONFileUploader />
+        <FileUploader />
       </div>
     </>
   );
