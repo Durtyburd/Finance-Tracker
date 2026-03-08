@@ -11,12 +11,21 @@ function Chart(props) {
     }))
     .filter((item) => !Number.isNaN(item.value));
   return (
-    <PieChart
-      data={data}
-      style={{ height: "220px" }}
-      label={({ dataEntry }) => dataEntry.title + dataEntry.value}
-      labelStyle={{ fontSize: "5px" }}
-    />
+    <>
+      <h5 style={{ display: "flex", justifyContent: "center" }}>
+        This chart represents what you spend the most on.
+      </h5>
+      <PieChart
+        data={data}
+        style={{ height: "300px" }}
+        label={({ dataEntry }) =>
+          dataEntry.title + ": " + dataEntry.value + "%"
+        }
+        radius={45}
+        labelPosition={100}
+        labelStyle={{ fontSize: "4px" }}
+      />
+    </>
   );
 }
 

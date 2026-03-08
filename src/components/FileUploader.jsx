@@ -63,9 +63,9 @@ function FileUploader() {
 
       {transactions && (
         <>
-          <TotalBalance amount={calculateBalance(transactionList)} />
           <TotalIncome amount={calculateIncome(transactionList)} />
           <TotalExpense amount={calculateExpenses(transactionList)} />
+          <TotalBalance amount={calculateBalance(transactionList)} />
           <Chart obj={calculatePercentage(transactions)} />
         </>
       )}
