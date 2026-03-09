@@ -55,7 +55,11 @@ function FileUploader() {
       <br />
       <small>
         For help getting NFCU CSV files. Look here:{" "}
-        <a href="https://bankxlsx.com/blog/can-i-export-navy-federal-credit-union-nfcu-transactions-to-csv-or-excel">
+        <a
+          href="https://bankxlsx.com/blog/can-i-export-navy-federal-credit-union-nfcu-transactions-to-csv-or-excel"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Step-by-step: Export NFCU account activity to CSV (desktop)
         </a>
       </small>
