@@ -52,6 +52,13 @@ function FileUploader() {
           <button type="submit">Submit</button>
         </form>{" "}
       </div>
+      <br />
+      <small>
+        For help getting NFCU CSV files. Look here:{" "}
+        <a href="https://bankxlsx.com/blog/can-i-export-navy-federal-credit-union-nfcu-transactions-to-csv-or-excel">
+          Step-by-step: Export NFCU account activity to CSV (desktop)
+        </a>
+      </small>
       <hr style={{ border: "2px solid black" }} />
       <div className="container">
         {transactions && (
