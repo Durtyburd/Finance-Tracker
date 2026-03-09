@@ -1,7 +1,11 @@
+import "../styles/TotalTransactions.css";
+
 function TotalTransactions(props) {
   return (
     <>
-      <h3>Total transactions: {props.amountOfTransactions}</h3>
+      <div className="card">
+        <h3>Total transactions: {props.amountOfTransactions}</h3>
+      </div>
     </>
   );
 }

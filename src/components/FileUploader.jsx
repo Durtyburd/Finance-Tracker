@@ -53,24 +53,30 @@ function FileUploader() {
         </form>{" "}
       </div>
       <hr style={{ border: "2px solid black" }} />
-      {transactions && (
-        <>
-          <TotalTransactions amountOfTransactions={transactionList.length} />
-        </>
-      )}
+      <div className="container">
+        {transactions && (
+          <>
+            <TotalTransactions amountOfTransactions={transactionList.length} />
+          </>
+        )}
+        {transactions && (
+          <>
+            <TotalIncome amount={calculateIncome(transactionList)} />
+            <TotalExpense amount={calculateExpenses(transactionList)} />
+            <TotalBalance amount={calculateBalance(transactionList)} />
+          </>
+        )}
+      </div>
       {transactions &&
         listTransactions(transactions).map((line, i) => {
-          return <p key={i}>{line}</p>;
+          return (
+            <p key={i}>
+              {i + 1}.) {line}
+            </p>
+          );
         })}
 
-      {transactions && (
-        <>
-          <TotalIncome amount={calculateIncome(transactionList)} />
-          <TotalExpense amount={calculateExpenses(transactionList)} />
-          <TotalBalance amount={calculateBalance(transactionList)} />
-          <Chart obj={calculatePercentage(transactions)} />
-        </>
-      )}
+      {transactions && <Chart obj={calculatePercentage(transactions)} />}
     </>
   );
 }
